@@ -1,0 +1,36 @@
+[LWC] error: Global error handler  E11000 duplicate key error collection: testingDB.users index: email_1 dup key: { email: "rifat@gmail.com" } (Sat Nov 04 2023 9:40:27 }) 
+[LWC] error: Global error handler  E11000 duplicate key error collection: testingDB.users index: nidOrBirthNumber_1 dup key: { nidOrBirthNumber: "1111111111111111111" } (Sat Nov 04 2023 9:41:27 }) 
+[LWC] error: Global error handler  [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "email"
+    ],
+    "message": "Email is required."
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "password"
+    ],
+    "message": "Password is required."
+  }
+] (Sat Nov 04 2023 9:53:27 }) 
+[LWC] error: Global error handler  [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "password"
+    ],
+    "message": "Password is required."
+  }
+] (Sat Nov 04 2023 9:55:23 }) 

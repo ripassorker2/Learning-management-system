@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/rsr/My Computer/Devlopement/basic setup/university-manegment-auth-backend-main/logs/winston/errors/.bd37f0dde255dd0526f173b689fd42cc21e916a6-audit.json",
+    "files": [
+        {
+            "date": 1698721439727,
+            "name": "/home/rsr/My Computer/Devlopement/basic setup/university-manegment-auth-backend-main/logs/winston/errors/UM-2023-31-10-09-error.log",
+            "hash": "41e995b9d08c43ccc71fe4be0f7a7b959d3fbcd8db255b1cc222061c36e04258"
+        }
+    ],
+    "hashType": "sha256"
+}

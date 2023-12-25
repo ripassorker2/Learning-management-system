@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/errors/.9259338836388053228ffd47a4aa095dc30cfec9-audit.json",
+    "files": [
+        {
+            "date": 1703437468218,
+            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/errors/UM-2023-24-12-23-error.log",
+            "hash": "d044ca24cee4254eb7eae3dced57eb2a0b5e8a2873bca5cbd0c5312106644bb2"
+        }
+    ],
+    "hashType": "sha256"
+}

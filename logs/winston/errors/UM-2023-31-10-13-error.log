@@ -1,0 +1,2 @@
+[LWC] error: Global error handler  Expected property name or '}' in JSON at position 6 (Tue Oct 31 2023 13:0:19 }) 
+[LWC] error: Global error handler  User validation failed: nidOrBirthNumber: Path `nidOrBirthNumber` is required., educationalQualification: Path `educationalQualification` is required., parmanentAddress: Path `parmanentAddress` is required., dateOfBirth: Path `dateOfBirth` is required., password: Path `password` is required., email: Path `email` is required. (Tue Oct 31 2023 13:2:40 }) 

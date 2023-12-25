@@ -1,0 +1,55 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/rsr/My Computer/Devlopement/Client project/edupy academy/edupy backend/logs/winston/errors/.dce2f5156ca9da19a828974bca502bcaf70f5b97-audit.json",
+    "files": [
+        {
+            "date": 1698722575696,
+            "name": "/home/rsr/My Computer/Devlopement/Client project/edupy academy/edupy backend/logs/winston/errors/UM-2023-31-10-09-error.log",
+            "hash": "b95f47b974d9dcb23f1654976780d3eb447f2ac263536309e002b70853fe234b"
+        },
+        {
+            "date": 1698735258407,
+            "name": "/home/rsr/My Computer/Devlopement/Client project/edupy academy/edupy backend/logs/winston/errors/UM-2023-31-10-12-error.log",
+            "hash": "b38d1bdf786bfdb766a9e1c224a30e7bb647900b955f99f51670aadbe120b899"
+        },
+        {
+            "date": 1698735619292,
+            "name": "/home/rsr/My Computer/Devlopement/Client project/edupy academy/edupy backend/logs/winston/errors/UM-2023-31-10-13-error.log",
+            "hash": "2c07f2ffefb6d8d01caf08b942d6438c2ff25fdbac8d35dd17987ed2b02ba529"
+        },
+        {
+            "date": 1699068041989,
+            "name": "/home/rsr/My Computer/Devlopement/Client project/edupy academy/edupy backend/logs/winston/errors/UM-2023-04-11-09-error.log",
+            "hash": "d7ae4b47e24fac34de9d44ad13083aa66aa5c447ff9f9f5e575778e8e79b809c"
+        },
+        {
+            "date": 1699070481357,
+            "name": "/home/rsr/My Computer/Devlopement/Client project/edupy academy/edupy backend/logs/winston/errors/UM-2023-04-11-10-error.log",
+            "hash": "e6137b56aecb80f1eeb082d985c16b3b377cd5139e0256507da65f9917b2140b"
+        },
+        {
+            "date": 1699074396721,
+            "name": "/home/rsr/My Computer/Devlopement/Client project/edupy academy/edupy backend/logs/winston/errors/UM-2023-04-11-11-error.log",
+            "hash": "59f0cb3b9775f9eef380299030e62b07a290ae7e854cf361dce7a7ba24e5255d"
+        },
+        {
+            "date": 1699077760605,
+            "name": "/home/rsr/My Computer/Devlopement/Client project/edupy academy/edupy backend/logs/winston/errors/UM-2023-04-11-12-error.log",
+            "hash": "76c3ad834f5939e15b9eb94f57aa84a787a1137d22f4c32e8e6bc2f49af984f6"
+        },
+        {
+            "date": 1699085948462,
+            "name": "/home/rsr/My Computer/Devlopement/Client project/edupy academy/edupy backend/logs/winston/errors/UM-2023-04-11-14-error.log",
+            "hash": "9e4b009f27e34803427a961357dcd5eec9d98230c49ed75df7c0f87c01268830"
+        },
+        {
+            "date": 1699088805235,
+            "name": "/home/rsr/My Computer/Devlopement/Client project/edupy academy/edupy backend/logs/winston/errors/UM-2023-04-11-15-error.log",
+            "hash": "a2b19c5c648fd6d3aa7fb128d96848e10aeca323bd46432fa62a58ea25369868"
+        }
+    ],
+    "hashType": "sha256"
+}

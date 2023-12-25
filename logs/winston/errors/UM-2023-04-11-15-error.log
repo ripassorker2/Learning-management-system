@@ -1,0 +1,41 @@
+[LWC] error: Global error handler  [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "oldPassword"
+    ],
+    "message": "Old password  is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "newPassword"
+    ],
+    "message": "New password  is required"
+  }
+] (Sat Nov 04 2023 15:9:25 }) 
+[LWC] error: Global error handler  Password is incorrect (Sat Nov 04 2023 15:14:16 }) 
+[LWC] error: Global error handler  Password is incorrect (Sat Nov 04 2023 15:14:24 }) 
+[LWC] error: Global error handler  Password is incorrect (Sat Nov 04 2023 15:14:43 }) 
+[LWC] error: Global error handler  [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "contactNo"
+    ],
+    "message": "Contact number  is required"
+  }
+] (Sat Nov 04 2023 15:30:33 }) 
+[LWC] error: Global error handler  E11000 duplicate key error collection: testingDB.users index: email_1 dup key: { email: "rifat@gmail.com" } (Sat Nov 04 2023 15:32:45 }) 
+[LWC] error: Global error handler  E11000 duplicate key error collection: testingDB.users index: nidOrBirthNumber_1 dup key: { nidOrBirthNumber: "11111" } (Sat Nov 04 2023 15:32:56 }) 
+[LWC] error: Global error handler  You are not authorized (Sat Nov 04 2023 15:33:59 }) 
+[LWC] error: Global error handler  Password is incorrect (Sat Nov 04 2023 15:34:10 }) 
