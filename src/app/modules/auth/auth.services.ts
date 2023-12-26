@@ -49,7 +49,6 @@ const loginUser = async (
       refreshToken,
       accessToken,
    };
-   return null;
 };
 
 const refreshToken = async (token: string): Promise<IRefreshToken | null> => {

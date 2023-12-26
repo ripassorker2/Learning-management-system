@@ -6,34 +6,14 @@
     "auditLog": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/errors/.b099a5bb873e60b6e6b884ed1085ba958da68935-audit.json",
     "files": [
         {
-            "date": 1703439238506,
-            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/errors/Lms-2023-24-12-23-error.log",
-            "hash": "5aaf6555afee57e1422acee42178e5159e683ee5de9f4d4a7b1dc9a0c6f486f8"
+            "date": 1703560717414,
+            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/errors/Lms-2023-26-12-09-error.log",
+            "hash": "cfb85b80d8a1388430dec5e7b1de41ad64b8e0e2238e40b8462c9dc9081389ab"
         },
         {
-            "date": 1703440835679,
-            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/errors/Lms-2023-25-12-00-error.log",
-            "hash": "3ba8ef8540665ff5192cab13949b69c04d509427c1f805df7f4348824ef19aad"
-        },
-        {
-            "date": 1703485168298,
-            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/errors/Lms-2023-25-12-12-error.log",
-            "hash": "8a70c9a0a30b37c48ddfdefe7124724fcf73eb62ed72735cbf6eb5d12762d61d"
-        },
-        {
-            "date": 1703495081091,
-            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/errors/Lms-2023-25-12-15-error.log",
-            "hash": "bb1e63d52e6698dc972164ce51399bf0efce53c00f4974fe13b22eed70566797"
-        },
-        {
-            "date": 1703515492297,
-            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/errors/Lms-2023-25-12-20-error.log",
-            "hash": "da9c9a332d6f14dbdced1038c809072953b56dfd818075796a2ad759beb6fe6b"
-        },
-        {
-            "date": 1703516411505,
-            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/errors/Lms-2023-25-12-21-error.log",
-            "hash": "8a9cceeb6577b5e29908be2cb9c3aaea995167b9345d469bf1d35a2335d963c4"
+            "date": 1703563484699,
+            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/errors/Lms-2023-26-12-10-error.log",
+            "hash": "e6e7515e9957607a52af37a1035749609dc28d675b5c88842d874c644262afc6"
         }
     ],
     "hashType": "sha256"

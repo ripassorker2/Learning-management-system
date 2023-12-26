@@ -29,22 +29,23 @@ const loginUser = catchAsync(async (req: Request, res: Response) => {
       data: result,
    });
 });
+
 const refreshToken = catchAsync(async (req: Request, res: Response) => {
    const { refreshToken } = req.cookies;
 
    const result = await AuthServices.refreshToken(refreshToken);
 
    // set refresh token into cookie
-   const cookieOptions = {
-      secure: config.env === 'production',
-      httpOnly: true,
-   };
-   res.cookie('refreshToken', result?.accessToken, cookieOptions);
+   // const cookieOptions = {
+   //    secure: config.env === 'production',
+   //    httpOnly: true,
+   // };
+   // res.cookie('refreshToken', result?.accessToken, cookieOptions);
 
    sendResponse<IRefreshToken>(res, {
       statusCode: StatusCodes.OK,
       success: true,
-      message: 'User logged successfully..!!',
+      message: 'Get access token successfully..!!',
       data: result,
    });
 });
@@ -61,9 +62,18 @@ const changePassword = catchAsync(async (req: Request, res: Response) => {
       message: 'Password changed successfully !',
    });
 });
+const logOut = catchAsync(async (req: Request, res: Response) => {
+   res.cookie('refreshToken', '');
+   sendResponse(res, {
+      statusCode: 200,
+      success: true,
+      message: 'Logout successfully !',
+   });
+});
 
 export const AuthController = {
    loginUser,
    refreshToken,
    changePassword,
+   logOut,
 };

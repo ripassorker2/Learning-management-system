@@ -33,6 +33,18 @@ const createUser = async (user: IUser): Promise<any | null> => {
    return activationToken.token;
 };
 
+const createActivationToken = (user: IUser): IActivationToken => {
+   const activationOtp = Math.floor(1000 + Math.random() * 9000).toString();
+
+   // create access token
+   const token = jwtHelpers.createToken(
+      { user, activationOtp },
+      config.jwt.activation_secret as Secret,
+      '5m' as string
+   );
+   return { token, otp: activationOtp };
+};
+
 const activeUser = async (payload: IActivationInfo): Promise<IUser | null> => {
    const getUserFromJwt = jwtHelpers.verifyToken(
       payload.activationToken,
@@ -55,18 +67,6 @@ const activeUser = async (payload: IActivationInfo): Promise<IUser | null> => {
 const getAllUsers = async (): Promise<IUser[] | null> => {
    const user = await User.find();
    return user;
-};
-
-const createActivationToken = (user: IUser): IActivationToken => {
-   const activationOtp = Math.floor(1000 + Math.random() * 9000).toString();
-
-   // create access token
-   const token = jwtHelpers.createToken(
-      { user, activationOtp },
-      config.jwt.activation_secret as Secret,
-      '5m' as string
-   );
-   return { token, otp: activationOtp };
 };
 
 export const UserServices = {

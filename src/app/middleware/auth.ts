@@ -11,6 +11,7 @@ export const auth =
       try {
          //
          const token = req.headers.authorization;
+
          if (!token) {
             throw new ApiError(
                StatusCodes.UNAUTHORIZED,
@@ -24,7 +25,6 @@ export const auth =
             token,
             config.jwt.secret_token as Secret
          );
-
          req.user = verifiedUser; // role  , userid
 
          // role diye guard korar jnno
