@@ -30,5 +30,10 @@ router.post(
    auth(USER_ROLE.ADMIN, USER_ROLE.USER),
    AuthController.changePassword
 );
+router.post(
+   '/social-auth',
+   validateRequest(AuthValidation.socialAuthZodSchema),
+   AuthController.socialAuth
+);
 
 export const AuthRoutes = router;

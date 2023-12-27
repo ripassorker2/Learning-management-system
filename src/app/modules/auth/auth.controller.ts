@@ -36,11 +36,15 @@ const refreshToken = catchAsync(async (req: Request, res: Response) => {
    const result = await AuthServices.refreshToken(refreshToken);
 
    // set refresh token into cookie
-   // const cookieOptions = {
-   //    secure: config.env === 'production',
-   //    httpOnly: true,
-   // };
-   // res.cookie('refreshToken', result?.accessToken, cookieOptions);
+   const cookieOptions = {
+      secure: config.env === 'production',
+      httpOnly: true,
+   };
+   res.cookie('refreshToken', result?.refreshToken, cookieOptions);
+
+   if (result?.refreshToken) {
+      delete result?.refreshToken;
+   }
 
    sendResponse<IRefreshToken>(res, {
       statusCode: StatusCodes.OK,
@@ -71,9 +75,33 @@ const logOut = catchAsync(async (req: Request, res: Response) => {
    });
 });
 
+const socialAuth = catchAsync(async (req: Request, res: Response) => {
+   const user = req.body;
+
+   const result = await AuthServices.socialAuth(user);
+   // set refresh token into cookie
+   const cookieOptions = {
+      secure: config.env === 'production',
+      httpOnly: true,
+   };
+   res.cookie('refreshToken', result?.refreshToken, cookieOptions);
+
+   if (result?.refreshToken) {
+      delete result?.refreshToken;
+   }
+
+   sendResponse<ILoginResponse>(res, {
+      statusCode: StatusCodes.OK,
+      success: true,
+      message: 'Social logged successfully..!!',
+      data: result,
+   });
+});
+
 export const AuthController = {
    loginUser,
    refreshToken,
    changePassword,
    logOut,
+   socialAuth,
 };

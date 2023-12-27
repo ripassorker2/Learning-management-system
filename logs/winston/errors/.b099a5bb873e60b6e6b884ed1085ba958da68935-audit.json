@@ -6,14 +6,9 @@
     "auditLog": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/errors/.b099a5bb873e60b6e6b884ed1085ba958da68935-audit.json",
     "files": [
         {
-            "date": 1703560717414,
-            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/errors/Lms-2023-26-12-09-error.log",
-            "hash": "cfb85b80d8a1388430dec5e7b1de41ad64b8e0e2238e40b8462c9dc9081389ab"
-        },
-        {
-            "date": 1703563484699,
-            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/errors/Lms-2023-26-12-10-error.log",
-            "hash": "e6e7515e9957607a52af37a1035749609dc28d675b5c88842d874c644262afc6"
+            "date": 1703657577954,
+            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/errors/Lms-2023-27-12-12-error.log",
+            "hash": "9967df65f99b48a69f4f39dd9c87f7d53c42ca5e51a058a6494a5057e5a51b15"
         }
     ],
     "hashType": "sha256"

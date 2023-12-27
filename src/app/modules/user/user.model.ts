@@ -22,7 +22,6 @@ const userSchema = new Schema<IUser, UserModel>(
       },
       password: {
          type: String,
-         required: true,
          minlength: [6, 'Password must be at list 6 characters'],
          select: 0,
       },
@@ -46,11 +45,13 @@ const userSchema = new Schema<IUser, UserModel>(
 
 userSchema.pre<IUser>('save', async function (next) {
    let user = this;
-   user.password = await bcrypt.hash(
-      user.password,
-      Number(config.bcrypt_salt_rounds)
-   );
-   next();
+   if (user?.password) {
+      user.password = await bcrypt.hash(
+         user.password,
+         Number(config.bcrypt_salt_rounds)
+      );
+      next();
+   }
 });
 
 export const User = model<IUser, UserModel>('User', userSchema);

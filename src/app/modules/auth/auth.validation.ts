@@ -26,9 +26,26 @@ const changePasswordZodSchema = z.object({
       }),
    }),
 });
+const socialAuthZodSchema = z.object({
+   body: z.object({
+      name: z.string({
+         required_error: 'Name is required',
+      }),
+      email: z.string({
+         required_error: 'Email is required.',
+      }),
+      avatar: z
+         .object({
+            public_id: z.string().optional(),
+            url: z.string().optional(),
+         })
+         .optional(),
+   }),
+});
 
 export const AuthValidation = {
    createLoginZodSchema,
    createRefreshTokenZodSchema,
    changePasswordZodSchema,
+   socialAuthZodSchema,
 };

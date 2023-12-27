@@ -35,8 +35,6 @@ const activeUser = catchAsync(async (req: Request, res: Response) => {
 const getAllUsers = catchAsync(async (req: Request, res: Response) => {
    const result = await UserServices.getAllUsers();
 
-   console.log(result);
-
    sendResponse<IUser[]>(res, {
       statusCode: StatusCodes.OK,
       success: true,
@@ -45,8 +43,20 @@ const getAllUsers = catchAsync(async (req: Request, res: Response) => {
    });
 });
 
+const getUserInfo = catchAsync(async (req: Request, res: Response) => {
+   const result = await UserServices.getUserInfo(req.params.email);
+
+   sendResponse<IUser>(res, {
+      statusCode: StatusCodes.OK,
+      success: true,
+      message: 'User retrive successfully..!!',
+      data: result,
+   });
+});
+
 export const UserControler = {
    createUser,
    activeUser,
    getAllUsers,
+   getUserInfo,
 };

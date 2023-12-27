@@ -4,13 +4,9 @@ import { JwtPayload, Secret } from 'jsonwebtoken';
 import config from '../../../config';
 import ApiError from '../../../errors/ApiError';
 import { jwtHelpers } from '../../../helpers/jwtHelpers';
+import { IUser } from '../user/user.interface';
 import { User } from '../user/user.model';
-import {
-   IChangePassword,
-   ILoginResponse,
-   ILoginUser,
-   IRefreshToken,
-} from './auth.interface';
+import { IChangePassword, ILoginResponse, ILoginUser } from './auth.interface';
 
 const loginUser = async (
    payload: ILoginUser
@@ -23,10 +19,10 @@ const loginUser = async (
       throw new ApiError(StatusCodes.NOT_FOUND, 'User does not exist');
    }
 
-   const isPasswordMatched = await bcrypt.compare(
-      password,
-      isUserExist.password
-   );
+   let isPasswordMatched;
+   if (isUserExist.password) {
+      isPasswordMatched = await bcrypt.compare(password, isUserExist.password);
+   }
 
    if (!isPasswordMatched) {
       throw new ApiError(StatusCodes.UNAUTHORIZED, 'Password is incorrect');
@@ -51,7 +47,7 @@ const loginUser = async (
    };
 };
 
-const refreshToken = async (token: string): Promise<IRefreshToken | null> => {
+const refreshToken = async (token: string): Promise<ILoginResponse | null> => {
    let verifiedToken = null;
    try {
       verifiedToken = jwtHelpers.verifyToken(
@@ -73,14 +69,21 @@ const refreshToken = async (token: string): Promise<IRefreshToken | null> => {
 
    //generate new token
 
-   const newAccessToken = jwtHelpers.createToken(
-      { email, role: isUserExist.role },
+   const accessToken = jwtHelpers.createToken(
+      { email, role: isUserExist?.role },
       config.jwt.secret_token as Secret,
       config.jwt.secret_expires as string
    );
 
+   const refreshToken = jwtHelpers.createToken(
+      { email, role: isUserExist?.role },
+      config.jwt.refresh_token as Secret,
+      config.jwt.refresh_expires as string
+   );
+
    return {
-      accessToken: newAccessToken,
+      refreshToken,
+      accessToken,
    };
 };
 
@@ -101,10 +104,13 @@ const changePassword = async (
    }
 
    // checking old password
-   const isPasswordMatched = await bcrypt.compare(
-      oldPassword,
-      isUserExist.password
-   );
+   let isPasswordMatched;
+   if (isUserExist.password) {
+      isPasswordMatched = await bcrypt.compare(
+         oldPassword,
+         isUserExist.password
+      );
+   }
 
    if (!isPasswordMatched) {
       throw new ApiError(StatusCodes.UNAUTHORIZED, 'Password is incorrect');
@@ -122,9 +128,47 @@ const changePassword = async (
       password: newHashedPassword,
    });
 };
+const socialAuth = async (user: IUser): Promise<ILoginResponse | null> => {
+   const { email } = user;
+   let isUserExist = null;
+   isUserExist = await User.findOne({ email });
+
+   // create access token
+   const accessToken = jwtHelpers.createToken(
+      { email, role: 'user' },
+      config.jwt.secret_token as Secret,
+      config.jwt.secret_expires as string
+   );
+
+   const refreshToken = jwtHelpers.createToken(
+      { email, role: 'user' },
+      config.jwt.refresh_token as Secret,
+      config.jwt.refresh_expires as string
+   );
+
+   if (!isUserExist) {
+      await User.create(user);
+      return {
+         refreshToken,
+         accessToken,
+      };
+   }
+
+   return {
+      refreshToken,
+      accessToken,
+   };
+};
+
+// const socialAuth = async (user: IUser): Promise<any> => {
+//    // console.log(user);
+
+//    return await User.create(user);
+// };
 
 export const AuthServices = {
    loginUser,
    refreshToken,
    changePassword,
+   socialAuth,
 };

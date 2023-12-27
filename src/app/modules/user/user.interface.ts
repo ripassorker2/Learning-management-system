@@ -4,7 +4,7 @@ export type IUser = {
    name: string;
    role: string;
    email: string;
-   password: string;
+   password?: string;
    avatar?: {
       public_id: string;
       url: string;

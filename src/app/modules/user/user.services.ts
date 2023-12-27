@@ -68,9 +68,14 @@ const getAllUsers = async (): Promise<IUser[] | null> => {
    const user = await User.find();
    return user;
 };
+const getUserInfo = async (email: string): Promise<IUser | null> => {
+   const user = await User.findOne({ email });
+   return user;
+};
 
 export const UserServices = {
    createUser,
    activeUser,
    getAllUsers,
+   getUserInfo,
 };
