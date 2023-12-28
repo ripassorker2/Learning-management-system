@@ -1,0 +1,42 @@
+[Lms] error: Global error handler  Password is incorrect (Wed Dec 27 2023 22:5:32 }) 
+[Lms] error: Global error handler  Password is incorrect (Wed Dec 27 2023 22:5:44 }) 
+[Lms] error: Global error handler  You are not authorized (Wed Dec 27 2023 22:8:17 }) 
+[Lms] error: Global error handler  You are not authorized (Wed Dec 27 2023 22:8:44 }) 
+[Lms] error: Global error handler  You are not authorized (Wed Dec 27 2023 22:9:14 }) 
+[Lms] error: Global error handler  You are not authorized (Wed Dec 27 2023 22:10:20 }) 
+[Lms] error: Global error handler  You are not authorized (Wed Dec 27 2023 22:10:21 }) 
+[Lms] error: Global error handler  Password is incorrect (Wed Dec 27 2023 22:12:5 }) 
+[Lms] error: Global error handler  Password is incorrect (Wed Dec 27 2023 22:12:39 }) 
+[Lms] error: Global error handler  Password is incorrect (Wed Dec 27 2023 22:12:41 }) 
+[Lms] error: Global error handler  Password is incorrect (Wed Dec 27 2023 22:14:23 }) 
+[Lms] error: Global error handler  Password is incorrect (Wed Dec 27 2023 22:14:41 }) 
+[Lms] error: Global error handler  Forbidden access. (Wed Dec 27 2023 22:16:33 }) 
+[Lms] error: Global error handler  Forbidden access. (Wed Dec 27 2023 22:16:58 }) 
+[Lms] error: Global error handler  Forbidden access. (Wed Dec 27 2023 22:17:9 }) 
+[Lms] error: Global error handler  Forbidden access. (Wed Dec 27 2023 22:17:10 }) 
+[Lms] error: Global error handler  Forbidden access. (Wed Dec 27 2023 22:18:15 }) 
+[Lms] error: Global error handler  [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "oldPassword"
+    ],
+    "message": "Old password  is required"
+  },
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "undefined",
+    "path": [
+      "body",
+      "newPassword"
+    ],
+    "message": "New password  is required"
+  }
+] (Wed Dec 27 2023 22:25:50 }) 
+[Lms] error: Global error handler  You are not authorized (Wed Dec 27 2023 22:26:43 }) 
+[Lms] error: Global error handler  Password is incorrect (Wed Dec 27 2023 22:27:23 }) 
+[Lms] error: Global error handler  Password is incorrect (Wed Dec 27 2023 22:27:36 }) 

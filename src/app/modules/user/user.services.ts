@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import cloudinary from 'cloudinary';
 import ejs from 'ejs';
 import { StatusCodes } from 'http-status-codes';
 import { Secret } from 'jsonwebtoken';
@@ -72,10 +73,84 @@ const getUserInfo = async (email: string): Promise<IUser | null> => {
    const user = await User.findOne({ email });
    return user;
 };
+const updateUser = async (
+   email: string,
+   payload: Partial<IUser>
+): Promise<IUser | null> => {
+   const isUserExist = await User.findOne({ email });
+   if (!isUserExist) {
+      throw new ApiError(StatusCodes.NOT_FOUND, 'User does not exist');
+   }
+
+   const { avatar, ...updatedInfo } = payload;
+
+   const updateData = { ...updatedInfo };
+
+   if (avatar && Object.keys(avatar).length > 0) {
+      Object.keys(avatar).forEach(key => {
+         const avatarKey = `avatar.${key}`;
+         (updateData as any)[avatarKey] = avatar[key as keyof typeof avatar];
+      });
+   }
+
+   const result = await User.findOneAndUpdate({ email }, updateData, {
+      new: true,
+   });
+   return result;
+};
+const updateAvatar = async (
+   email: string,
+   avatar: any
+): Promise<IUser | null> => {
+   const isUserExist = await User.findOne({ email });
+   if (!isUserExist) {
+      throw new ApiError(StatusCodes.NOT_FOUND, 'User does not exist');
+   }
+
+   if (!avatar) {
+      throw new ApiError(StatusCodes.BAD_REQUEST, "Don't provide image.");
+   }
+
+   console.log(avatar);
+
+   let updateData = null;
+
+   if (isUserExist?.avatar?.public_id) {
+      await cloudinary.v2.uploader.destroy(isUserExist?.avatar?.public_id);
+      const cloud = await cloudinary.v2.uploader.upload(avatar, {
+         folder: 'avatars',
+         width: '150',
+      });
+      updateData = {
+         avatar: {
+            public_id: cloud.public_id,
+            url: cloud.secure_url,
+         },
+      };
+   } else {
+      const cloud = await cloudinary.v2.uploader.upload(avatar, {
+         folder: 'avatars',
+         width: '150',
+      });
+      updateData = {
+         avatar: {
+            public_id: cloud.public_id,
+            url: cloud.secure_url,
+         },
+      };
+   }
+
+   const result = await User.findOneAndUpdate({ email }, updateData, {
+      new: true,
+   });
+   return result || null;
+};
 
 export const UserServices = {
    createUser,
    activeUser,
    getAllUsers,
    getUserInfo,
+   updateUser,
+   updateAvatar,
 };

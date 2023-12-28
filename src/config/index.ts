@@ -22,4 +22,9 @@ export default {
       mail: process.env.SMTP_MAIL,
       pass: process.env.SMTP_PASSWORD,
    },
+   cloud: {
+      name: process.env.CLOUD_NAME,
+      key: process.env.CLOUD_KEY,
+      seckret: process.env.CLOUD_SECKRET,
+   },
 };

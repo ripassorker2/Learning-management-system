@@ -54,9 +54,35 @@ const getUserInfo = catchAsync(async (req: Request, res: Response) => {
    });
 });
 
+const updateUser = catchAsync(async (req: Request, res: Response) => {
+   const email = req.params.email;
+   const updateInfo = req.body;
+   const result = await UserServices.updateUser(email, updateInfo);
+
+   sendResponse<IUser>(res, {
+      statusCode: StatusCodes.OK,
+      success: true,
+      message: 'User updated successfully..!!',
+      data: result,
+   });
+});
+
+const updateAvatar = catchAsync(async (req: Request, res: Response) => {
+   const result = await UserServices.updateAvatar(req.params.email, req.body);
+
+   sendResponse<IUser>(res, {
+      statusCode: StatusCodes.OK,
+      success: true,
+      message: 'User avatar update successfully..!!',
+      data: result,
+   });
+});
+
 export const UserControler = {
    createUser,
    activeUser,
    getAllUsers,
    getUserInfo,
+   updateUser,
+   updateAvatar,
 };

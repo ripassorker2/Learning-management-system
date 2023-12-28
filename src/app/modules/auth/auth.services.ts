@@ -14,6 +14,7 @@ const loginUser = async (
    const { email, password } = payload;
 
    const isUserExist = await User.findOne({ email }, { password: 1, role: 1 });
+   console.log(isUserExist);
 
    if (!isUserExist) {
       throw new ApiError(StatusCodes.NOT_FOUND, 'User does not exist');

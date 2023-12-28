@@ -23,5 +23,16 @@ router.get(
    auth(USER_ROLE.ADMIN, USER_ROLE.USER),
    UserControler.getAllUsers
 );
+router.put(
+   '/update-user/:email',
+   auth(USER_ROLE.ADMIN, USER_ROLE.USER),
+   UserControler.updateUser
+);
+router.put(
+   '/update-avatar/:email',
+   // FileUploadHelper.upload.single('file'),
+   auth(USER_ROLE.ADMIN, USER_ROLE.USER),
+   UserControler.updateAvatar
+);
 
 export const UserRoutes = router;
