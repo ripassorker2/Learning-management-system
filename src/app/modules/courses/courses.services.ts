@@ -7,7 +7,13 @@ import ApiError from '../../../errors/ApiError';
 import { sendMail } from '../../../helpers/sendMail';
 import { redis } from '../../../shared/redis';
 import { User } from '../user/user.model';
-import { ICourses, IQuestionData, IReplyData } from './courses.interface';
+import {
+   ICourses,
+   IQuestionData,
+   IReplyData,
+   IReplyReviewData,
+   IReviewData,
+} from './courses.interface';
 import { Course } from './courses.model';
 
 const createCourse = async (payload: ICourses): Promise<ICourses | null> => {
@@ -192,6 +198,93 @@ const replyQuestion = async (
    return result;
 };
 
+const addReview = async (payload: IReviewData, email: string): Promise<any> => {
+   if (!payload.courseId || !payload.rating || !payload.review)
+      throw new ApiError(
+         StatusCodes.BAD_REQUEST,
+         'Please provide course id, review message and rating.'
+      );
+   const user = await User.findOne({ email });
+   const isExistCourseUser = user?.courses?.find(
+      crs => crs.courseId == payload.courseId
+   );
+
+   if (!isExistCourseUser)
+      throw new ApiError(
+         StatusCodes.UNAUTHORIZED,
+         'You are not authorized to access this course.'
+      );
+   const course = await Course.findById(payload.courseId);
+   const { review, rating } = payload;
+   const newReview: any = {
+      user: {
+         name: user?.name,
+         avatar: {
+            public_id: user?.avatar?.public_id,
+            url: user?.avatar?.url,
+         },
+         email: user?.email,
+         role: user?.role,
+      },
+      comment: review,
+      rating,
+   };
+   course?.reviews.push(newReview);
+
+   let avg = 0;
+   course?.reviews.forEach(rev => {
+      avg = avg + rev.rating;
+   });
+
+   if (course) {
+      course.ratings = avg / course.reviews.length;
+   }
+   const result = await course?.save();
+
+   //  create notification
+   // const notification = {
+   //    title: 'New review recieved.',
+   //    message: `Hi! ${user?.name} created a review in ${course?.name} course.`,
+   // };
+
+   return result;
+};
+const replyReview = async (
+   payload: IReplyReviewData,
+   email: string
+): Promise<any> => {
+   if (!payload.courseId || !payload.comment || !payload.reviewId)
+      throw new ApiError(
+         StatusCodes.BAD_REQUEST,
+         'Please provide course id, review id and message.'
+      );
+
+   const user = await User.findOne({ email });
+   const course = await Course.findById(payload.courseId);
+
+   if (!course) throw new ApiError(StatusCodes.NOT_FOUND, 'Course not found..');
+
+   const review = course.reviews.find(r => r._id == payload.reviewId);
+   if (!review) throw new ApiError(StatusCodes.NOT_FOUND, 'Review not found..');
+
+   const newReviewReply: any = {
+      user: {
+         name: user?.name,
+         avatar: {
+            public_id: user?.avatar?.public_id,
+            url: user?.avatar?.url,
+         },
+         email: user?.email,
+         role: user?.role,
+      },
+      comment: payload.comment,
+   };
+   review.commentReplies?.push(newReviewReply);
+   const result = await course?.save();
+
+   return result;
+};
+
 export const CourseServices = {
    createCourse,
    updateCourse,
@@ -200,4 +293,6 @@ export const CourseServices = {
    getCourseContent,
    addQuestion,
    replyQuestion,
+   addReview,
+   replyReview,
 };

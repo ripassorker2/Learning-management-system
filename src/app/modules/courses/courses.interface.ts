@@ -11,7 +11,7 @@ export type IReview = {
    user: Partial<IUser>;
    rating: number;
    comment: string;
-   commentReplies: IComment[];
+   commentReplies?: IComment[];
 } & Document;
 
 export type ILink = {
@@ -60,4 +60,15 @@ export type IReplyData = {
    contentId: string;
    questionId: string;
    answer: string;
+};
+
+export type IReviewData = {
+   courseId: string;
+   review: string;
+   rating: number;
+};
+export type IReplyReviewData = {
+   courseId: string;
+   reviewId: string;
+   comment: number;
 };

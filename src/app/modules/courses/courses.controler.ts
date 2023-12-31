@@ -88,6 +88,28 @@ const replyQuestion = catchAsync(async (req: Request, res: Response) => {
       data: result,
    });
 });
+const addReview = catchAsync(async (req: Request, res: Response) => {
+   const userEmail = req.user?.email;
+   const result = await CourseServices.addReview(req.body, userEmail);
+
+   sendResponse<ICourses | null>(res, {
+      statusCode: StatusCodes.OK,
+      success: true,
+      message: `Add review succesfully.`,
+      data: result,
+   });
+});
+const replyReview = catchAsync(async (req: Request, res: Response) => {
+   const userEmail = req.user?.email;
+   const result = await CourseServices.replyReview(req.body, userEmail);
+
+   sendResponse<ICourses | null>(res, {
+      statusCode: StatusCodes.OK,
+      success: true,
+      message: `Reply review succesfully.`,
+      data: result,
+   });
+});
 
 export const CourseControler = {
    createCourse,
@@ -97,4 +119,6 @@ export const CourseControler = {
    getCourseContent,
    addQuestion,
    replyQuestion,
+   addReview,
+   replyReview,
 };
