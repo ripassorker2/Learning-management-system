@@ -8,16 +8,16 @@ import {
    IReview,
 } from './courses.interface';
 
-const commentSchema = new Schema<IComment>({
+const questionSchema = new Schema<IComment>({
    user: {
       type: Object,
       required: true,
    },
-   comment: {
+   question: {
       type: String,
       required: true,
    },
-   commentReplies: [Object],
+   questionReplies: [Object],
 });
 
 const reviewSchema = new Schema<IReview>({
@@ -79,8 +79,8 @@ const courseDataSchema = new Schema<ICourseData>({
       type: String,
       required: true,
    },
-   question: {
-      type: [commentSchema],
+   questions: {
+      type: [questionSchema],
       required: true,
    },
 });

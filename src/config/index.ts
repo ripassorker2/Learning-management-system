@@ -27,4 +27,5 @@ export default {
       key: process.env.CLOUD_KEY,
       seckret: process.env.CLOUD_SECKRET,
    },
+   redis_url: process.env.REDIS_URL,
 };

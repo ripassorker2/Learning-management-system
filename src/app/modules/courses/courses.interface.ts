@@ -2,8 +2,8 @@ import { Document, Model } from 'mongoose';
 
 export type IComment = {
    user: object;
-   comment: string;
-   commentReplies?: IComment[];
+   question: string;
+   questionReplies?: IComment[];
 } & Document;
 
 export type IReview = {
@@ -27,7 +27,7 @@ export type ICourseData = {
    videoPlayer: string;
    links: ILink[];
    suggestions: string;
-   question: IComment[];
+   questions: IComment[];
 } & Document;
 
 export type ICourses = {
@@ -48,3 +48,9 @@ export type ICourses = {
 } & Document;
 
 export type CoureseModel = Model<ICourses, Record<string, unknown>>;
+
+export type IQuestionData = {
+   courseId: string;
+   contentId: string;
+   question: string;
+};

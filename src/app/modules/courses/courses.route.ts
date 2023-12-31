@@ -5,7 +5,20 @@ import { CourseControler } from './courses.controler';
 
 const router = Router();
 
+router.put(
+   '/add-question',
+   auth(USER_ROLE.ADMIN, USER_ROLE.USER),
+   CourseControler.addQuestion
+);
+
 router.post('/create', auth(USER_ROLE.ADMIN), CourseControler.createCourse);
-router.put('/:id', auth(USER_ROLE.ADMIN), CourseControler.updateCourse);
+router.put('/update/:id', auth(USER_ROLE.ADMIN), CourseControler.updateCourse);
+router.get('/:id', CourseControler.getSingleCourse);
+router.get('/', CourseControler.getAllCourses);
+router.get(
+   '/get-course-content/:courseId',
+   auth(USER_ROLE.ADMIN, USER_ROLE.USER),
+   CourseControler.getCourseContent
+);
 
 export const CourseRouter = router;

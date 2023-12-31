@@ -161,12 +161,6 @@ const socialAuth = async (user: IUser): Promise<ILoginResponse | null> => {
    };
 };
 
-// const socialAuth = async (user: IUser): Promise<any> => {
-//    // console.log(user);
-
-//    return await User.create(user);
-// };
-
 export const AuthServices = {
    loginUser,
    refreshToken,
