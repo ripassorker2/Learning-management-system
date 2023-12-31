@@ -22,6 +22,7 @@ const createUser = async (user: IUser): Promise<any | null> => {
       name: user.name,
       otp: activationToken.otp,
    };
+
    await ejs.renderFile(path.join(__dirname, '../../mail/mail.ejs'), data);
 
    await sendMail({

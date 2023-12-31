@@ -10,6 +10,11 @@ router.put(
    auth(USER_ROLE.ADMIN, USER_ROLE.USER),
    CourseControler.addQuestion
 );
+router.put(
+   '/reply-question',
+   auth(USER_ROLE.ADMIN, USER_ROLE.USER),
+   CourseControler.replyQuestion
+);
 
 router.post('/create', auth(USER_ROLE.ADMIN), CourseControler.createCourse);
 router.put('/update/:id', auth(USER_ROLE.ADMIN), CourseControler.updateCourse);

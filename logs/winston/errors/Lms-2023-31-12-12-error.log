@@ -17,3 +17,7 @@
 [Lms] error: Global error handler  You are not eligible for this course. (Sun Dec 31 2023 12:33:48 }) 
 [Lms] error: Global error handler  This content is not available. (Sun Dec 31 2023 12:35:56 }) 
 [Lms] error: Global error handler  This content is not available. (Sun Dec 31 2023 12:36:22 }) 
+[Lms] error: Global error handler  You are not authorized (Sun Dec 31 2023 12:54:39 }) 
+[Lms] error: Global error handler  Please provide content id , course id, question id and questions. (Sun Dec 31 2023 12:55:1 }) 
+[Lms] error: Global error handler  Please provide content id , course id, question id and answer. (Sun Dec 31 2023 12:56:26 }) 
+[Lms] error: Global error handler  Please provide content id , course id, question id and answer. (Sun Dec 31 2023 12:56:50 }) 

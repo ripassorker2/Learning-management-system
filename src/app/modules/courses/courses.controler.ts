@@ -70,10 +70,21 @@ const addQuestion = catchAsync(async (req: Request, res: Response) => {
    const userEmail = req.user?.email;
    const result = await CourseServices.addQuestion(req.body, userEmail);
 
-   sendResponse<Partial<ICourses>>(res, {
+   sendResponse<ICourses>(res, {
       statusCode: StatusCodes.OK,
       success: true,
       message: `Add question succesfully.`,
+      data: result,
+   });
+});
+const replyQuestion = catchAsync(async (req: Request, res: Response) => {
+   const userEmail = req.user?.email;
+   const result = await CourseServices.replyQuestion(req.body, userEmail);
+
+   sendResponse<ICourses | null>(res, {
+      statusCode: StatusCodes.OK,
+      success: true,
+      message: `Reply question answer succesfully.`,
       data: result,
    });
 });
@@ -85,4 +96,5 @@ export const CourseControler = {
    getAllCourses,
    getCourseContent,
    addQuestion,
+   replyQuestion,
 };

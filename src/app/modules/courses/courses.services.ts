@@ -1,10 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import ejs from 'ejs';
 import { StatusCodes } from 'http-status-codes';
 import mongoose from 'mongoose';
+import path from 'path';
 import ApiError from '../../../errors/ApiError';
+import { sendMail } from '../../../helpers/sendMail';
 import { redis } from '../../../shared/redis';
 import { User } from '../user/user.model';
-import { ICourses, IQuestionData } from './courses.interface';
+import { ICourses, IQuestionData, IReplyData } from './courses.interface';
 import { Course } from './courses.model';
 
 const createCourse = async (payload: ICourses): Promise<ICourses | null> => {
@@ -63,7 +66,9 @@ const getCourseContent = async (
    email: string
 ): Promise<any> => {
    const user = await User.findOne({ email });
+
    const courseExist = user?.courses?.find(c => c?.courseId == courseId);
+
    if (!courseExist) {
       throw new ApiError(
          StatusCodes.FORBIDDEN,
@@ -94,7 +99,6 @@ const addQuestion = async (
    const courseContent = course?.courseData?.find(
       c => c._id == payload.contentId
    );
-
    if (!mongoose.Types.ObjectId.isValid(payload.contentId || payload.courseId))
       throw new ApiError(StatusCodes.BAD_REQUEST, 'Id is invalid.');
 
@@ -111,8 +115,79 @@ const addQuestion = async (
    };
 
    courseContent.questions.push(newQuestion);
-
    const result = await course?.save();
+   return result;
+};
+const replyQuestion = async (
+   payload: IReplyData,
+   email: string
+): Promise<any> => {
+   //
+   if (
+      !payload.contentId ||
+      !payload.courseId ||
+      !payload.answer ||
+      !payload.questionId
+   )
+      throw new ApiError(
+         StatusCodes.BAD_REQUEST,
+         'Please provide content id , course id, question id and answer.'
+      );
+   if (
+      !mongoose.Types.ObjectId.isValid(
+         payload.contentId || payload.courseId || payload.questionId
+      )
+   )
+      throw new ApiError(StatusCodes.BAD_REQUEST, 'Id is invalid.');
+
+   const user = await User.findOne(
+      { email },
+      { name: 1, avatar: 1, email: 1, role: 1 }
+   );
+   const course = await Course.findById({ _id: payload.courseId });
+
+   const courseContent = course?.courseData?.find(
+      c => c._id == payload.contentId
+   );
+
+   if (!courseContent)
+      throw new ApiError(
+         StatusCodes.NOT_FOUND,
+         'This content is not available.'
+      );
+   const courseQuestion = courseContent?.questions.find(
+      q => q._id == payload.questionId
+   );
+
+   if (!courseQuestion)
+      throw new ApiError(StatusCodes.NOT_FOUND, 'This question is not found.');
+   const newReplies: any = {
+      user,
+      answer: payload.answer,
+   };
+
+   courseQuestion?.questionReplies?.push(newReplies);
+   const result = await course?.save();
+
+   if (courseQuestion?.user?.email == user?.email) {
+      // create notification
+   } else {
+      const data = {
+         name: courseQuestion?.user?.name,
+         title: courseContent?.title,
+      };
+      await ejs.renderFile(
+         path.join(__dirname, '../../mail/question.ejs'),
+         data
+      );
+
+      await sendMail({
+         email: courseQuestion?.user?.email,
+         subject: 'Reply question answer.',
+         template: 'question.ejs',
+         data,
+      });
+   }
 
    return result;
 };
@@ -124,4 +199,5 @@ export const CourseServices = {
    getAllCourse,
    getCourseContent,
    addQuestion,
+   replyQuestion,
 };

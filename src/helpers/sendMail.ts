@@ -10,7 +10,7 @@ type EmailOptions = {
    data: { [key: string]: string };
 };
 
-export const sendMail = async (options: EmailOptions): Promise<void> => {
+export const sendMail = async (options: EmailOptions | any): Promise<void> => {
    const transporter: Transporter = nodemailer.createTransport({
       host: config.smtp.host,
       port: parseInt(config.smtp.port || '587'),

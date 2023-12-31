@@ -1,13 +1,14 @@
 import { Document, Model } from 'mongoose';
+import { IUser } from '../user/user.interface';
 
 export type IComment = {
-   user: object;
+   user: Partial<IUser>;
    question: string;
    questionReplies?: IComment[];
 } & Document;
 
 export type IReview = {
-   user: object;
+   user: Partial<IUser>;
    rating: number;
    comment: string;
    commentReplies: IComment[];
@@ -53,4 +54,10 @@ export type IQuestionData = {
    courseId: string;
    contentId: string;
    question: string;
+};
+export type IReplyData = {
+   courseId: string;
+   contentId: string;
+   questionId: string;
+   answer: string;
 };
