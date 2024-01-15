@@ -1,3 +1,0 @@
-[Lms] error: Global error handler   Course validation failed: reviews.0.comment: Path `comment` is required. (Sun Dec 31 2023 23:0:32 }) 
-[Lms] error: Global error handler  Please provide course id, review id and message. (Sun Dec 31 2023 23:20:31 }) 
-[Lms] error: Global error handler  Review not found.. (Sun Dec 31 2023 23:21:36 }) 

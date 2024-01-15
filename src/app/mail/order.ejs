@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            background-color: #007BFF;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        h2 {
+            color: #007BFF;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        footer {
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+    <title>Order Confirmation</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Order Confirmation</h1>
+        </header>
+        <div class="content">
+            <p>Dear <%= order.userName %>,</p>
+            <p>Thank you for your order on LMS! Your order has been successfully placed and is being processed.</p>
+            <h2>Order Details:</h2>
+            <p>Course Name: <%= order.name %></p>
+            <p>Subtotal: <%= order.price %></p>
+            <p>Order ID: <%= order._id %></p>
+            <p>Order Date: <%= order.date %></p>
+            <p>Total Amount: <%= order.price %></p>
+            <p>Thank you for choosing LMS. If you have any questions or concerns, feel free to contact our support team.</p>
+        </div>
+        <footer>
+            <p>Best Regards,<br> LMS Team</p>
+        </footer>
+    </div>
+</body>
+</html>

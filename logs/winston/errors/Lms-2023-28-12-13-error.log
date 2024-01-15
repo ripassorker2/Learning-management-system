@@ -1,4 +1,0 @@
-[Lms] error: Global error handler  ENOTDIR: not a directory, open 'uploads/localhost_3000_ (2).png' (Thu Dec 28 2023 13:0:31 }) 
-[Lms] error: Global error handler  ENOENT: no such file or directory, open 'uploads/localhost_3000_ (2).png' (Thu Dec 28 2023 13:1:16 }) 
-[Lms] error: Global error handler  ENOENT: no such file or directory, open 'uploads/1702815070970_1702815056167.jpg' (Thu Dec 28 2023 13:2:26 }) 
-[Lms] error: Global error handler  ENOTDIR: not a directory, open 'uploads/localhost_3000_ (2).png' (Thu Dec 28 2023 13:5:59 }) 

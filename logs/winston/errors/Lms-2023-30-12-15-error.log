@@ -1,7 +1,0 @@
-[Lms] error: Global error handler  You are not authorized (Sat Dec 30 2023 15:18:39 }) 
-[Lms] error: Global error handler  Forbidden access. (Sat Dec 30 2023 15:19:38 }) 
-[Lms] error: Global error handler  Forbidden access. (Sat Dec 30 2023 15:20:8 }) 
-[Lms] error: Global error handler   Course validation failed: name: Path `name` is required. (Sat Dec 30 2023 15:22:55 }) 
-[Lms] error: Global error handler   Course validation failed: price: Path `price` is required. (Sat Dec 30 2023 15:23:9 }) 
-[Lms] error: Global error handler   Course validation failed: courseData.1.videoUrl: Path `videoUrl` is required. (Sat Dec 30 2023 15:23:29 }) 
-[Lms] error: Global error handler   Course validation failed: courseData.1.suggestions: Path `suggestions` is required. (Sat Dec 30 2023 15:23:40 }) 

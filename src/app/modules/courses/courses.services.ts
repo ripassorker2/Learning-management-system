@@ -15,6 +15,7 @@ import {
    IReviewData,
 } from './courses.interface';
 import { Course } from './courses.model';
+import { Notification } from '../notification/model';
 
 const createCourse = async (payload: ICourses): Promise<ICourses | null> => {
    const result = await Course.create(payload);
@@ -120,6 +121,12 @@ const addQuestion = async (
       commentReplies: [],
    };
 
+   await Notification.create({
+      userId: user?._id,
+      title: 'New question.',
+      message: `You have recieved a new question on ${courseContent.title} video.`,
+   });
+
    courseContent.questions.push(newQuestion);
    const result = await course?.save();
    return result;
@@ -177,6 +184,11 @@ const replyQuestion = async (
 
    if (courseQuestion?.user?.email == user?.email) {
       // create notification
+      await Notification.create({
+         userId: user?._id,
+         title: 'New replies.',
+         message: `You have a new replies on ${courseContent.title} .`,
+      });
    } else {
       const data = {
          name: courseQuestion?.user?.name,
