@@ -66,6 +66,27 @@ const updateUser = catchAsync(async (req: Request, res: Response) => {
       data: result,
    });
 });
+const upadateUserRole = catchAsync(async (req: Request, res: Response) => {
+   const { id, role } = req.body;
+   const result = await UserServices.upadateUserRole(id, role);
+
+   sendResponse<IUser>(res, {
+      statusCode: StatusCodes.OK,
+      success: true,
+      message: 'User role updated successfully..!!',
+      data: result,
+   });
+});
+const deleteUser = catchAsync(async (req: Request, res: Response) => {
+   const result = await UserServices.deleteUser(req.params.id);
+
+   sendResponse<IUser>(res, {
+      statusCode: StatusCodes.OK,
+      success: true,
+      message: 'User deleted successfully..!!',
+      data: result,
+   });
+});
 
 const updateAvatar = catchAsync(async (req: Request, res: Response) => {
    const result = await UserServices.updateAvatar(req.params.email, req.body);
@@ -82,7 +103,9 @@ export const UserControler = {
    createUser,
    activeUser,
    getAllUsers,
+   upadateUserRole,
    getUserInfo,
    updateUser,
    updateAvatar,
+   deleteUser,
 };

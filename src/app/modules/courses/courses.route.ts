@@ -31,5 +31,6 @@ router.get(
    auth(USER_ROLE.ADMIN, USER_ROLE.USER),
    CourseControler.getCourseContent
 );
+router.delete('/:id', auth(USER_ROLE.ADMIN), CourseControler.deleteCourse);
 
 export const CourseRouter = router;

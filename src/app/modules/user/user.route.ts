@@ -30,5 +30,11 @@ router.put(
    auth(USER_ROLE.ADMIN, USER_ROLE.USER),
    UserControler.updateAvatar
 );
+router.put(
+   '/update-role',
+   auth(USER_ROLE.ADMIN),
+   UserControler.upadateUserRole
+);
+router.delete('/:id', auth(USER_ROLE.ADMIN), UserControler.deleteUser);
 
 export const UserRoutes = router;

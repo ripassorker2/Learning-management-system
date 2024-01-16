@@ -111,6 +111,17 @@ const replyReview = catchAsync(async (req: Request, res: Response) => {
    });
 });
 
+const deleteCourse = catchAsync(async (req: Request, res: Response) => {
+   const result = await CourseServices.deleteCourse(req.params.id);
+
+   sendResponse<ICourses>(res, {
+      statusCode: StatusCodes.OK,
+      success: true,
+      message: 'Course deleted successfully..!!',
+      data: result,
+   });
+});
+
 export const CourseControler = {
    createCourse,
    updateCourse,
@@ -121,4 +132,5 @@ export const CourseControler = {
    replyQuestion,
    addReview,
    replyReview,
+   deleteCourse,
 };

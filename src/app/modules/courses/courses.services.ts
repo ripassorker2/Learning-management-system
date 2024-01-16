@@ -6,6 +6,7 @@ import path from 'path';
 import ApiError from '../../../errors/ApiError';
 import { sendMail } from '../../../helpers/sendMail';
 import { redis } from '../../../shared/redis';
+import { Notification } from '../notification/model';
 import { User } from '../user/user.model';
 import {
    ICourses,
@@ -15,7 +16,6 @@ import {
    IReviewData,
 } from './courses.interface';
 import { Course } from './courses.model';
-import { Notification } from '../notification/model';
 
 const createCourse = async (payload: ICourses): Promise<ICourses | null> => {
    const result = await Course.create(payload);
@@ -297,6 +297,14 @@ const replyReview = async (
    return result;
 };
 
+const deleteCourse = async (id: string) => {
+   const course = await Course.findOne({ _id: id });
+
+   if (!course) throw new ApiError(StatusCodes.BAD_REQUEST, 'Course not found');
+
+   return await Course.findByIdAndDelete(id);
+};
+
 export const CourseServices = {
    createCourse,
    updateCourse,
@@ -307,4 +315,5 @@ export const CourseServices = {
    replyQuestion,
    addReview,
    replyReview,
+   deleteCourse,
 };

@@ -1,4 +1,4 @@
-import { Model } from 'mongoose';
+import { Document, Model } from 'mongoose';
 
 export type IUser = {
    name: string;
@@ -11,7 +11,7 @@ export type IUser = {
    };
    isVerified?: boolean;
    courses?: Array<{ courseId: string }>;
-};
+} & Document;
 
 export type UserModel = Model<IUser, Record<string, unknown>>;
 

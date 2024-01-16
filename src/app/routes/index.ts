@@ -1,4 +1,5 @@
 import express from 'express';
+import { AnaliticsRoutes } from '../modules/analytics/route';
 import { AuthRoutes } from '../modules/auth/auth.route';
 import { CourseRouter } from '../modules/courses/courses.route';
 import { NotificationRoutes } from '../modules/notification/route';
@@ -28,6 +29,10 @@ const moduleRoutes = [
    {
       path: '/notification',
       routes: NotificationRoutes,
+   },
+   {
+      path: '/analytics',
+      routes: AnaliticsRoutes,
    },
 ];
 

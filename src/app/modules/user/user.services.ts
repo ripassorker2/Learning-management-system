@@ -72,6 +72,27 @@ const getAllUsers = async (): Promise<IUser[] | null> => {
 const getUserInfo = async (email: string): Promise<IUser | null> => {
    return await User.findOne({ email });
 };
+
+const upadateUserRole = async (id: string, role: string) => {
+   const user = await User.findOne({ _id: id });
+
+   if (user?.role === role) {
+      throw new ApiError(
+         StatusCodes.BAD_REQUEST,
+         `The user is already in the ${role} `
+      );
+   }
+   return await User.findByIdAndUpdate(id, { role }, { new: true });
+};
+const deleteUser = async (id: string) => {
+   const user = await User.findOne({ _id: id });
+
+   if (!user) {
+      throw new ApiError(StatusCodes.BAD_REQUEST, 'User not found');
+   }
+   return await User.findByIdAndDelete(id);
+};
+
 const updateUser = async (
    email: string,
    payload: Partial<IUser>
@@ -152,4 +173,6 @@ export const UserServices = {
    getUserInfo,
    updateUser,
    updateAvatar,
+   upadateUserRole,
+   deleteUser,
 };
