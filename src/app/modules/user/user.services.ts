@@ -67,12 +67,10 @@ const activeUser = async (payload: IActivationInfo): Promise<IUser | null> => {
 };
 
 const getAllUsers = async (): Promise<IUser[] | null> => {
-   const user = await User.find();
-   return user;
+   return await User.find().sort({ createdAt: -1 });
 };
 const getUserInfo = async (email: string): Promise<IUser | null> => {
-   const user = await User.findOne({ email });
-   return user;
+   return await User.findOne({ email });
 };
 const updateUser = async (
    email: string,

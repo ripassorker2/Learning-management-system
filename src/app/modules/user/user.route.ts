@@ -18,11 +18,7 @@ router.get(
    auth(USER_ROLE.ADMIN, USER_ROLE.USER),
    UserControler.getUserInfo
 );
-router.get(
-   '/',
-   auth(USER_ROLE.ADMIN, USER_ROLE.USER),
-   UserControler.getAllUsers
-);
+router.get('/', auth(USER_ROLE.ADMIN), UserControler.getAllUsers);
 router.put(
    '/update-user/:email',
    auth(USER_ROLE.ADMIN, USER_ROLE.USER),

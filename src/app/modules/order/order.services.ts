@@ -81,6 +81,11 @@ const createOrder = async (payload: Partial<IOrder>) => {
    return course;
 };
 
+const getAllOrder = async (): Promise<IOrder[] | null> => {
+   return await Order.find().sort({ createdAt: -1 });
+};
+
 export const OrderServices = {
    createOrder,
+   getAllOrder,
 };
