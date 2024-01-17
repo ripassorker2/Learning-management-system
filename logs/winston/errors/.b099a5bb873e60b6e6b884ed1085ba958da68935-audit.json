@@ -54,6 +54,11 @@
             "date": 1705400836535,
             "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/errors/Lms-2024-16-01-16-error.log",
             "hash": "2f20fd7ef2dec7a54d382a9a498bf494400ea3fffbee37876cdc1ba492819f7b"
+        },
+        {
+            "date": 1705468342584,
+            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/errors/Lms-2024-17-01-11-error.log",
+            "hash": "aa0d57332c245d5a42694c3dbe449cedd9f848a2c5d25ad960d3e2569d0f091d"
         }
     ],
     "hashType": "sha256"
