@@ -101,6 +101,7 @@ const addReview = catchAsync(async (req: Request, res: Response) => {
 });
 const replyReview = catchAsync(async (req: Request, res: Response) => {
    const userEmail = req.user?.email;
+
    const result = await CourseServices.replyReview(req.body, userEmail);
 
    sendResponse<ICourses | null>(res, {

@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import config from '../../../config';
 import { catchAsync } from '../../../shared/catchAsync';
+import { redis } from '../../../shared/redis';
 import { sendResponse } from '../../../shared/sendResponse';
 import { ILoginResponse, IRefreshToken } from './auth.interface';
 import { AuthServices } from './auth.services';
@@ -16,6 +17,7 @@ const loginUser = catchAsync(async (req: Request, res: Response) => {
       secure: config.env === 'production',
       httpOnly: true,
    };
+   res.cookie('accessToken', result?.accessToken, cookieOptions);
    res.cookie('refreshToken', result?.refreshToken, cookieOptions);
 
    if (result?.refreshToken) {
@@ -40,6 +42,7 @@ const refreshToken = catchAsync(async (req: Request, res: Response) => {
       secure: config.env === 'production',
       httpOnly: true,
    };
+   res.cookie('accessToken', result?.accessToken, cookieOptions);
    res.cookie('refreshToken', result?.refreshToken, cookieOptions);
 
    if (result?.refreshToken) {
@@ -67,6 +70,8 @@ const changePassword = catchAsync(async (req: Request, res: Response) => {
    });
 });
 const logOut = catchAsync(async (req: Request, res: Response) => {
+   redis.del(req.user?.email);
+   res.cookie('accessToken', '');
    res.cookie('refreshToken', '');
    sendResponse(res, {
       statusCode: 200,
@@ -84,6 +89,7 @@ const socialAuth = catchAsync(async (req: Request, res: Response) => {
       secure: config.env === 'production',
       httpOnly: true,
    };
+   res.cookie('accessToken', result?.accessToken, cookieOptions);
    res.cookie('refreshToken', result?.refreshToken, cookieOptions);
 
    if (result?.refreshToken) {

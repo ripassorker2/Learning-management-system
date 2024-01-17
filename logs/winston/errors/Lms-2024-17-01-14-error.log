@@ -1,0 +1,5 @@
+[Lms] error: Global error handler  You are not authorized (Wed Jan 17 2024 14:38:23 }) 
+[Lms] error: Global error handler  req.cookies is not a function (Wed Jan 17 2024 14:43:50 }) 
+[Lms] error: Global error handler  jwt expired (Wed Jan 17 2024 14:44:20 }) 
+[Lms] error: Global error handler  jwt expired (Wed Jan 17 2024 14:45:59 }) 
+[Lms] error: Global error handler  You are not authorized (Wed Jan 17 2024 14:50:39 }) 

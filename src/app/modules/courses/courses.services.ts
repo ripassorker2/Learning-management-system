@@ -52,7 +52,7 @@ const getSingleCourse = async (
    const result = await Course.findOne({ _id: id }).select(
       '-courseData.videoUrl -courseData.suggestions -courseData.question -courseData.links '
    );
-   await redis.set(id, JSON.stringify(result));
+   await redis.set(id, JSON.stringify(result), 'EX', 604800);
    return result;
 };
 const getAllCourse = async (): Promise<Partial<ICourses[] | null>> => {
@@ -65,7 +65,7 @@ const getAllCourse = async (): Promise<Partial<ICourses[] | null>> => {
    const result = await Course.find().select(
       '-courseData.videoUrl -courseData.suggestions -courseData.question -courseData.links '
    );
-   await redis.set('allCourses', JSON.stringify(result));
+   await redis.set('allCourses', JSON.stringify(result), 'EX', 604800);
    return result;
 };
 const getCourseContent = async (

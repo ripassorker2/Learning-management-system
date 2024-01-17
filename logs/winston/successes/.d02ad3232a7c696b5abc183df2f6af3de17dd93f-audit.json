@@ -6,59 +6,19 @@
     "auditLog": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/successes/.d02ad3232a7c696b5abc183df2f6af3de17dd93f-audit.json",
     "files": [
         {
-            "date": 1705300463818,
-            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/successes/Lms-2024-15-01-12-success.log",
-            "hash": "f1d54d78aebab3d51028c167c9c7cb275135de6e8466ac58f90fc56edbc38152"
+            "date": 1705479156953,
+            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/successes/Lms-2024-17-01-14-success.log",
+            "hash": "0ae4c27467651570ba5f604a130bd0e7354396f6df26f1ad3ced4c0660d89237"
         },
         {
-            "date": 1705302005891,
-            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/successes/Lms-2024-15-01-13-success.log",
-            "hash": "7289f2ff35e6ffc1fcc44f6b9e25089f3329168fb14b3268c7e25040a8a6d43f"
+            "date": 1705482078264,
+            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/successes/Lms-2024-17-01-15-success.log",
+            "hash": "572cda69584afa93821d5f8c9501fa96a3a484f016122e60886196de994b53b5"
         },
         {
-            "date": 1705307842922,
-            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/successes/Lms-2024-15-01-14-success.log",
-            "hash": "7e07e7b5ed92aae210b1b80b258b903cb6becc1a9bc286a2d14dc214bec0bd47"
-        },
-        {
-            "date": 1705309372886,
-            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/successes/Lms-2024-15-01-15-success.log",
-            "hash": "98e6668825fc3c5a076bd093b0a74d4985753ceb24f5de0263799d1dcdd175c5"
-        },
-        {
-            "date": 1705328381779,
-            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/successes/Lms-2024-15-01-20-success.log",
-            "hash": "d7cd633cd96b1c4bf4cff0321ce50ad05b14c8e48b00662b140c269a785202d1"
-        },
-        {
-            "date": 1705331565590,
-            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/successes/Lms-2024-15-01-21-success.log",
-            "hash": "c8fe7e81d11d96b5a627fe5f2428f31b4efa0835e620fdecd7bebfc119303dc3"
-        },
-        {
-            "date": 1705334404623,
-            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/successes/Lms-2024-15-01-22-success.log",
-            "hash": "86066bda5db638ac5bf03f6e7d181b26b340ac1f92c8907dfda1707b01332852"
-        },
-        {
-            "date": 1705392877679,
-            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/successes/Lms-2024-16-01-14-success.log",
-            "hash": "6657f1901417c37b47947d18a7a760f155b3be5bb556d360a7eddffd9d79c459"
-        },
-        {
-            "date": 1705395614265,
-            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/successes/Lms-2024-16-01-15-success.log",
-            "hash": "fa23da01711ea511d08c5754beea91b41d6af9081ba64c417ca80c613521d3d4"
-        },
-        {
-            "date": 1705400836524,
-            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/successes/Lms-2024-16-01-16-success.log",
-            "hash": "20e103297154e4ea373b38d53da8c736e4980292356dab339726990f425321e3"
-        },
-        {
-            "date": 1705468342581,
-            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/successes/Lms-2024-17-01-11-success.log",
-            "hash": "cdcd981df52aa1b9b269b024be6995984aa269140a691fd56f2d70242f1b4af0"
+            "date": 1705486083030,
+            "name": "/home/rsr/My Computer/Devlopement/Next Lavel Devlopment/LMS/logs/winston/successes/Lms-2024-17-01-16-success.log",
+            "hash": "c2c59888b9b5f9f9d819a1ee9d6edc86902b886db24c6f5c69ae5551e8027aa1"
         }
     ],
     "hashType": "sha256"

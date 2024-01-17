@@ -68,7 +68,7 @@ const createOrder = async (payload: Partial<IOrder>) => {
       data: mailData,
    });
 
-   isUserExist.courses?.push(course._id);
+   isUserExist.courses?.push({ courseId: course._id });
 
    await isUserExist.save();
 

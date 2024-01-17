@@ -4,6 +4,7 @@ import { JwtPayload, Secret } from 'jsonwebtoken';
 import config from '../../../config';
 import ApiError from '../../../errors/ApiError';
 import { jwtHelpers } from '../../../helpers/jwtHelpers';
+import { redis } from '../../../shared/redis';
 import { IUser } from '../user/user.interface';
 import { User } from '../user/user.model';
 import { IChangePassword, ILoginResponse, ILoginUser } from './auth.interface';
@@ -14,7 +15,6 @@ const loginUser = async (
    const { email, password } = payload;
 
    const isUserExist = await User.findOne({ email }, { password: 1, role: 1 });
-   console.log(isUserExist);
 
    if (!isUserExist) {
       throw new ApiError(StatusCodes.NOT_FOUND, 'User does not exist');
@@ -28,6 +28,9 @@ const loginUser = async (
    if (!isPasswordMatched) {
       throw new ApiError(StatusCodes.UNAUTHORIZED, 'Password is incorrect');
    }
+   const redisUser = await User.findOne({ email });
+
+   redis.set(email, JSON.stringify(redisUser), 'EX', 604800);
 
    // create access token
    const accessToken = jwtHelpers.createToken(
@@ -81,6 +84,9 @@ const refreshToken = async (token: string): Promise<ILoginResponse | null> => {
       config.jwt.refresh_token as Secret,
       config.jwt.refresh_expires as string
    );
+
+   const redisUser = await User.findOne({ email });
+   redis.set(email, JSON.stringify(redisUser), 'EX', 604800);
 
    return {
       refreshToken,

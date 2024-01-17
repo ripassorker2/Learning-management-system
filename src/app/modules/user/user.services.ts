@@ -8,6 +8,7 @@ import config from '../../../config';
 import ApiError from '../../../errors/ApiError';
 import { jwtHelpers } from '../../../helpers/jwtHelpers';
 import { sendMail } from '../../../helpers/sendMail';
+import { redis } from '../../../shared/redis';
 import { IActivationInfo, IActivationToken, IUser } from './user.interface';
 import { User } from './user.model';
 
@@ -69,7 +70,13 @@ const activeUser = async (payload: IActivationInfo): Promise<IUser | null> => {
 const getAllUsers = async (): Promise<IUser[] | null> => {
    return await User.find().sort({ createdAt: -1 });
 };
+
 const getUserInfo = async (email: string): Promise<IUser | null> => {
+   const redisUser = await redis.get(email);
+   if (redisUser) {
+      const result = await JSON.parse(redisUser);
+      return result;
+   }
    return await User.findOne({ email });
 };
 
